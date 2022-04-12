@@ -1,5 +1,8 @@
 package com.cpnv
 
+import java.util
+import java.util.Objects
+import java.util.function.Consumer
 import scala.annotation.targetName
 
 class LinkedList {
@@ -99,11 +102,17 @@ class LinkedList {
   @targetName("isEmpty")
   def empty_? : Boolean = _head == null && _tail == null && _size == 0
 
-  private def _removeHeadAndTail(): Unit = {
-    _head = null
-    _tail = null
-
-    _size = 0
+  /**
+   * Iterate through all elements in the list.
+   *
+   * @param action The action to apply on each element.
+   */
+  def foreach(action: Consumer[Any]): Unit = {
+    Objects.requireNonNull(action)
+    var currentNode = _head
+    for (_ <- 0 until _size)
+      action.accept(currentNode.value)
+      currentNode = currentNode.next
   }
 
   private def _removeHead(): Unit = {
@@ -111,6 +120,13 @@ class LinkedList {
     _head.previous = null
 
     _size -= 1
+  }
+
+  private def _removeHeadAndTail(): Unit = {
+    _head = null
+    _tail = null
+
+    _size = 0
   }
 
   private class Node(val value: Any) {

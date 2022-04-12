@@ -2,6 +2,8 @@ package com.cpnv
 
 import com.cpnv.LinkedList
 
+import java.util
+
 object Main {
   def main(args: Array[String]): Unit = {
     val list = new LinkedList
@@ -17,7 +19,7 @@ object Main {
     list.addTail(19)
 
     list.addHead(5)
-    list.addHead(3)
+    list.addHead(4)
     list.addHead(3)
     list.addHead(2)
     list.addHead(1)
@@ -28,11 +30,8 @@ object Main {
     list.removeHead()
     list.removeHead()
 
-    val head = list.head
-    val tail = list.tail
-    val sizeAtEnd = list.size
-    val isEmptyAtEnd = list.empty_?
+    println(s"At end: Head=${list.head};Tail=${list.tail};Size=${list.size};Empty=${list.empty_?}")
 
-    println(s"At end: Head=$head;Tail=$tail;Size=$sizeAtEnd;Empty=$isEmptyAtEnd")
+    list.foreach(x => println(s"Value : $x"))
   }
 }
