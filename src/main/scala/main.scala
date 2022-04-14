@@ -1,8 +1,10 @@
 package com.cpnv
 
+import java.util
+
 @main
 def main(): Unit = {
-  val list = new LinkedList
+  val list = new LinkedList[Int]
 
   val sizeAtStart = list.size
   val isEmptyAtStart = list.empty_?
@@ -28,5 +30,5 @@ def main(): Unit = {
 
   println(s"At end: Head=${list.head};Tail=${list.tail};Size=${list.size};Empty=${list.empty_?}")
 
-  list.foreach(x => println(s"Value : $x"))
+  list.forEach(x => println(s"Value : $x"))
 }
