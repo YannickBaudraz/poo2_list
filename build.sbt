@@ -7,7 +7,4 @@ lazy val root = (project in file("."))
     name := "LinkedList",
     idePackagePrefix := Some("com.cpnv")
   )
-
-libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.2.11" % Test
-)
+libraryDependencies += "org.scalatest" %% "scalatest-wordspec" % "3.2.11" % Test
