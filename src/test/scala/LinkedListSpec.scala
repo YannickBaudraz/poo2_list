@@ -18,7 +18,7 @@ class LinkedListSpec extends UnitSpec {
       }
 
       "have empty_? true" in {
-        assert(list.empty_?)
+        assert(list.isEmpty)
       }
     }
 
@@ -41,7 +41,7 @@ class LinkedListSpec extends UnitSpec {
       }
 
       "have empty_? false" in {
-        assert(!list.empty_?)
+        assert(!list.isEmpty)
       }
     }
   }
