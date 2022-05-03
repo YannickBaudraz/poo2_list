@@ -8,6 +8,7 @@ import scala.annotation.targetName
 class LinkedList[A] {
 
   private val EMPTY_LIST_MESSAGE = "The LinkedList is empty."
+
   private var _head: Option[Node] = None
   private var _tail: Option[Node] = None
   private var _size: Int = 0
@@ -137,10 +138,9 @@ class LinkedList[A] {
     _size -= 1
   }
 
-  class Node(val value: A) {
+  private class Node(val value: A) {
+
     var previous: Option[Node] = None
     var next: Option[Node] = None
-
-    def hasNext: Boolean = next.isDefined
   }
 }
