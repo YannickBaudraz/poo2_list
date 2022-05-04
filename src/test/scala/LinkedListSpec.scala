@@ -1,5 +1,7 @@
 package com.cpnv
 
+import structure.LinkedList
+
 class LinkedListSpec extends UnitSpec {
   "A LinkedList" when {
     "empty" should {

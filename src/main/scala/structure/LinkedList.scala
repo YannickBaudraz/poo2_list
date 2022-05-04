@@ -1,4 +1,5 @@
 package com.cpnv
+package structure
 
 import java.util
 import java.util.Objects
@@ -47,7 +48,7 @@ class LinkedList[A] {
    */
   def addHead(value: A): Unit = {
     val node = new Node(value)
-    if (isEmpty) _addOnEmptyList(node) 
+    if (isEmpty) _addOnEmptyList(node)
     else _addHead(node)
   }
 

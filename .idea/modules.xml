@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/poo2_list-build.iml" filepath="$PROJECT_DIR$/.idea/modules/poo2_list-build.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/poo2_list.iml" filepath="$PROJECT_DIR$/.idea/modules/poo2_list.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LinkedList.iml" filepath="$PROJECT_DIR$/.idea/modules/LinkedList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LinkedList-build.iml" filepath="$PROJECT_DIR$/.idea/modules/LinkedList-build.iml" />
     </modules>
   </component>
 </project>
