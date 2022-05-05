@@ -13,5 +13,5 @@ class ListQueue[A] extends Queue[A] {
 
   def enqueue(elem: A): Unit = list.addHead(elem)
 
-  def dequeue(): Unit = if (!isEmpty) list.removeHead()
+  def dequeue(): Unit = if (isEmpty) throw new EmptyQueueException else list.removeHead()
 }

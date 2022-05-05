@@ -18,5 +18,5 @@ class ArrayQueue[A] extends Queue[A] {
 
   def enqueue(elem: A): Unit = array.addOne(elem)
 
-  def dequeue(): Unit = if (!isEmpty) array.remove(0)
+  def dequeue(): Unit = if (isEmpty) throw new EmptyQueueException else array.remove(0)
 }

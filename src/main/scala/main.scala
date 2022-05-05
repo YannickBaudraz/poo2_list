@@ -41,44 +41,57 @@ def ex1(): Unit = {
 }
 
 def ex2(): Unit = {
-  ex2List()
-  ex2Array()
+  val arrayQueue = new ArrayQueue[Int]
+  val listQueue = new ListQueue[Int]
+
+  val smallArrayQueue: Queue[Int] = arrayQueue
+  val smallListQueue: Queue[Int] = listQueue
+
+  val largeArrayQueue: Queue[Int] = arrayQueue
+  val largeListQueue: Queue[Int] = listQueue
+
+  fillQueue(smallArrayQueue, 100)
+  fillQueue(smallListQueue, 100)
+
+  fillQueue(largeArrayQueue, 100_000)
+  fillQueue(largeListQueue, 100_000)
+
+  val benchmarkCount = 200_000
+  println(s"Benchmarking smallArrayQueue with $benchmarkCount elements")
+  benchmark(smallArrayQueue, benchmarkCount)
+
+  println(s"Benchmarking smallListQueue with $benchmarkCount elements")
+  benchmark(smallListQueue, benchmarkCount)
+
+  println(s"Benchmarking largeArrayQueue with $benchmarkCount elements")
+  benchmark(largeArrayQueue, benchmarkCount)
+
+  println(s"Benchmarking largeListQueue with $benchmarkCount elements")
+  benchmark(largeListQueue, benchmarkCount)
 }
 
-def ex2List(): Unit = {
-  println("\nListQueue")
+def fillQueue(queue: Queue[Int], size: Int): Unit = for (i <- 1 to size) queue.enqueue(i)
 
-  val smallListQueue: Queue[Int] = new ListQueue[Int]
-  val largeListQueue: Queue[Int] = new ListQueue[Int]
-  fillQueue(smallListQueue, 1000)
-  fillQueue(largeListQueue, 100000)
-  unfillQueue(smallListQueue)
-  unfillQueue(largeListQueue)
+def unfillQueue(queue: Queue[Int], size: Int): Unit = for (_ <- 1 to size) queue.dequeue()
+
+def benchmark(queue: Queue[Int], count: Int): Unit = {
+  benchmarkEnqueue(queue, count)
+  benchmarkDequeue(queue, count)
 }
 
-def ex2Array(): Unit = {
-  println("\nArrayQueue")
-
-  val smallArrayQueue: Queue[Int] = new ArrayQueue[Int]
-  val largeArrayQueue: Queue[Int] = new ArrayQueue[Int]
-  fillQueue(smallArrayQueue, 1000)
-  fillQueue(largeArrayQueue, 100000)
-  unfillQueue(smallArrayQueue)
-  unfillQueue(largeArrayQueue)
-}
-
-def fillQueue(queue: Queue[Int], count: Int): Unit = {
+def benchmarkEnqueue(queue: Queue[Int], count: Int): Unit = {
   val start: Long = System.currentTimeMillis()
-  for (i <- 1 to count) queue.enqueue(i)
+  fillQueue(queue, count)
   val end: Long = System.currentTimeMillis()
 
   println(s"Time to fill queue: ${(end - start).toFloat / 1000}ms")
 }
 
-def unfillQueue(queue: Queue[Int]): Unit = {
+def benchmarkDequeue(queue: Queue[Int], count: Int): Unit = {
   val start: Long = System.currentTimeMillis()
-  for (_ <- 1 to queue.size) queue.dequeue()
+  unfillQueue(queue, count)
   val end: Long = System.currentTimeMillis()
 
   println(s"Time to unfill queue: ${(end - start).toFloat / 1000}ms")
+  println()
 }
