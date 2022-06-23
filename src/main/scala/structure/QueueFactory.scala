@@ -4,13 +4,15 @@ package structure
 import scala.annotation.static
 
 /**
- * @param param
- * @tparam A
+ * @param param The type of Queue wanted.
+ * @tparam A The type of the elements in the Queue.
  * @return
  */
 def QueueFactory[A](param: String): Queue[A] = {
-  val KIND_MAP = Map("memory" -> ArrayQueue[A], "speed" -> ListQueue[A])
+  val KIND_MAP = Map(
+    "memory" -> ArrayQueue[A],
+    "speed" -> ListQueue[A]
+  )
 
-  val ok = KIND_MAP(param)
-  return ok;
+  KIND_MAP(param)
 }
